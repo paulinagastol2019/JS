@@ -1,33 +1,34 @@
-const elementDiv = document.querySelector('div');
+const sqr = document.querySelector('div');
 
-let divX = 100;
-let divY = 120;
+let positionX = 50;
+let positionY = 90;
 
-elementDiv.style.left = `${divX}px`;
-elementDiv.style.top = `${divY}px`;
+sqr.style.left = `${positionX}px`;
+sqr.style.top = `${positionY}px`;
 
-let insertElementDivX;
-let insertElementDivY;
+let insertSqrX;
+let insertSqrY;
 
 let active = false;
 
-elementDiv.addEventListener('mousedown', (e) => {
-    elementDiv.style.backgroundColor = 'grey';
-    insertElementDivX = e.offsetX;
-    insertElementDivY = e.offsetY;
+sqr.addEventListener('mousedown', (e)=>{
+    sqr.style.backgroundColor = 'grey';
+    insertSqrX = e.offsetX;
+    insertSqrY = e.offsetY;
     active = true;
+
 })
 
-elementDiv.addEventListener('mousemove', (e) => {
-  if(active){
-    divX = e.clientX - insertElementDivX;
-    divY = e.clientY - insertElementDivY;
-    elementDiv.style.left = `${divX}px`;
-    elementDiv.style.top = `${divY}px`;
-  }
+sqr.addEventListener('mousemove', (e)=>{
+    if(active){
+    positionX = e.clientX - insertSqrX;
+    positionY = e.clientY - insertSqrY;
+    sqr.style.left = `${positionX}px`;
+    sqr.style.top = `${positionY}px`;
+    }
 })
 
-elementDiv.addEventListener('mouseup', () => {
-    elementDiv.style.backgroundColor = 'rgb(111, 180, 6)';
+sqr.addEventListener('mouseup', () => {
+    sqr.style.backgroundColor = 'deeppink';
     active = !active;
 })
