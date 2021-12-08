@@ -1,10 +1,25 @@
 const btnAdd = document.querySelector('button');
 const txtInput = document.querySelector('input');
 const divList = document.querySelector('div');
+const names = [];
 
-const addNames = (e) => {
+const addName = (e) => {
   e.preventDefault();
-  divList.textContent = txtInput.value;
+  const newName = txtInput.value;
+  if(txtInput.value.length > 0){
+    
+    for(name of names){
+      if(name === newName){
+        alert('Taka wartość jest już na liscie!');
+        return;
+      }
+    }
+  }
+
+
+  names.push(newName);
+  divList.textContent += newName + ', ';
+  txtInput.value = '';
 }
 
-btnAdd.addEventListener('click', addNames)
+btnAdd.addEventListener('click', addName)
